@@ -1477,7 +1477,7 @@ input, select, textarea {
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically adjust the number of columns based on available width */
-    gap: 0.1rem 2rem; /* Adds space between the images */
+    gap: 0.1rem 5rem; /* Adds space between the images */
     width: 100%; /* Makes the gallery fill the width of the page */
     max-width: 1200px; /* Optional: Sets a maximum width for the gallery */
     margin: 0 auto; /* Centers the gallery horizontally */
@@ -2052,6 +2052,7 @@ input, select, textarea {
 		line-height: 1.8;
 		color: #fff;
 		margin-bottom: 20px;
+		text-align: justify;
 	}
 
 	/* Emphasis on Strong Text */
@@ -2913,7 +2914,7 @@ input, select, textarea {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 10px;
-    width: 300px;
+    width: 500px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     text-align: center;
     color: var(--lightest-color);
@@ -2922,8 +2923,7 @@ input, select, textarea {
 .pricing-card h2 {
     font-size: 28px;
     font-weight: 700;
-    text-transform: uppercase;
-    color: var(--primary-color);
+    color: white;
 }
 
 .pricing-card h3 {
@@ -2942,7 +2942,7 @@ input, select, textarea {
     border-bottom: 1px dashed white;
     padding-bottom: 5px;
     margin-bottom: 10px;
-    color: var(--primary-color);
+    color: white;
 }
 
 .pricing-card span {

@@ -1,6 +1,13 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Oleo+Script:400|Open+Sans:300,300italic,600,600italic,800");
 
+@font-face {
+    font-family: 'LucidaUnicodeCalligraphy';
+    src: url('../webfonts/LucidaUnicodeCalligraphy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*
 	Verti by HTML5 UP
 	html5up.net | @ajlkn
@@ -15,6 +22,7 @@
     --primary-color: #c6ada4;
     --dark-color: #b7afa9;
     --darkest-color: #949494;
+	--light-bg-color: #F7F2EB;
     
     /* Dark theme colors (can be used later if you want dark mode) */
     --dark-primary-color: #333;  /* Dark theme primary color */
@@ -114,7 +122,7 @@ input, select, textarea {
 		font-family: "Philosopher", serif;
 		font-weight: 400;
 		font-style: normal;
-		font-size: 13pt;
+		font-size: 25pt;
 		color: var(--darkest-color);
 		line-height: 2.25em;
 	}
@@ -134,7 +142,7 @@ input, select, textarea {
 		font-family: "Philosopher", serif;
 		font-weight: 400;
 		font-style: normal;
-		font-size: 13pt;
+		font-size: 18pt;
 		color: var(--darkest-color);
 		line-height: 2.25em;
 	}
@@ -1473,62 +1481,6 @@ input, select, textarea {
 
 		}
 
-		/* Gallery *//* Gallery */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Automatically adjust the number of columns based on available width */
-    gap: 0.1rem 5rem; /* Adds space between the images */
-    width: 100%; /* Makes the gallery fill the width of the page */
-    max-width: 1200px; /* Optional: Sets a maximum width for the gallery */
-    margin: 0 auto; /* Centers the gallery horizontally */
-    padding: 1rem; /* Optional padding around the gallery */
-}
-
-/* Gallery items */
-.gallery article {
-    position: relative;
-    opacity: 1.0;
-    transition: transform 1s ease, opacity 1s ease;
-    display: flex; /* Use flexbox to center the images */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-}
-
-/* Image inside gallery */
-.gallery img {
-    width: 100%; /* Makes the images responsive to fill the column */
-    height: 210px; /* Set a fixed height for the images */
-    object-fit: cover; /* Ensures images fill the space while maintaining their aspect ratio */
-    border-radius: 8px; /* Optional: adds rounded corners */
-}
-
-/* Optional: Add a hover effect for interactivity */
-.gallery article:hover {
-    transform: scale(1.05); /* Slight zoom effect */
-    opacity: 0.9; /* Slight fade effect */
-}
-
-
-	@media screen and (max-width: 480px) {
-
-		.gallery {
-			-moz-flex-wrap: nowrap;
-			-webkit-flex-wrap: nowrap;
-			-ms-flex-wrap: nowrap;
-			flex-wrap: nowrap;
-			-moz-flex-direction: column;
-			-webkit-flex-direction: column;
-			-ms-flex-direction: column;
-			flex-direction: column;
-		}
-
-			.gallery article {
-				width: 100%;
-			}
-
-	}
-
-
 /* Section/Article */
 
 	section, article {
@@ -1997,12 +1949,13 @@ input, select, textarea {
 	*/
 	
 	#header-wrapper {
-		position: relative; /* Keeps the header fixed at the top*/
-		top: 0; /* Positions it at the very top*/
+		position: relative;
+		top: 0;
 		left: 0;
-		width: 100%; /* Ensures it spans the full width*/
-		background-color: white; /* Ensures the background remains visible*/
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow effect*/
+		width: 100%;
+		background-color: var(--light-bg-color);
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+		z-index: 1000;
 	}
 
 	#features-wrapper {
@@ -2011,8 +1964,9 @@ input, select, textarea {
 
 	#footer-wrapper {
 		padding: 4em 0 2em 0;
-		background-color: white; /* Ensure the background remains black */
+		background-color: var(--light-bg-color); /* Ensure the background remains black */
 		color: var(--darkest-color);
+		font-size: 1.2rem;
 	}
 
 	#image-wrapper {
@@ -2048,7 +2002,7 @@ input, select, textarea {
 
 	/* Paragraph Styles */
 	#main-wrapper p {
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 		line-height: 1.8;
 		color: #fff;
 		margin-bottom: 20px;
@@ -2093,40 +2047,39 @@ input, select, textarea {
 		justify-content: center;
 		height: 200px; /* Adjust as needed
 	}
-	*/
-	#header {
-		display: flex;
-		flex-direction: column;
-		align-items: center; /* Centers everything horizontally */
-		justify-content: center; /* Centers everything vertically */
-		height: 200px; /* Adjust as needed */
-		position: relative;
+	*/#header {
+		position: relative;  /* Ensure it's positioned normally */
+		width: 100%;  /* Full width */
+		top: 0;  /* Aligns it to the top */
+		z-index: 1000;  /* Keeps it above other elements if needed */
 	}
 
 /* Logo */
 
+	/* Logo in the center */
 	#logo {
-		max-height: 100%;
 		display: flex;
-		align-items: center; /* Aligns logo vertically */
 		justify-content: center;
+		align-items: center;
+		flex-grow: 1; /* Allows logo to take available space */
 	}
 
-		#logo img {
-			max-height: 200px; /* Adjust this to fit your header */
-			width: auto; /* Keeps aspect ratio */
-			object-fit: contain;
-		}
+	/* Make the logo image responsive */
+	#logo img {
+		max-width: 100%;
+		height: auto;
+		max-height: 150px; /* Adjust based on your preferred logo size */
+	}
 
 		#logo h1 {
-			background: var(--darkest-color);
-			color: var(--lightest-color);
+			/*background: var(--darkest-color);*/
+			color: #B1905A;
 			border-radius: 6px;
-			font-family: "Philosopher", serif;
+			font-family: 'LucidaUnicodeCalligraphy';
 			font-weight: 400;
-			font-style: normal;
-			padding: 0.25em 0.2em 0.25em 0.2em;
-			font-size: 3.25em;
+			/*padding: 0.25em 0.2em 0.25em 0.5em;*/
+			padding: 1em 0.2em 0.25em 0em;
+			font-size: 5.5em;
 			letter-spacing: 0.05em;
 			display: inline-block;
 			vertical-align: middle;
@@ -2135,63 +2088,76 @@ input, select, textarea {
 		
 /* Nav */
 
-	#nav {
-		position: relative; /* Remove absolute positioning */
-		top: auto;
-		right: auto;
-		font-size: 1em;
-		text-align: center;
-		display: flex;
-		justify-content: center; /* Center align the nav */
-	}
+/* Flex container for the navigation */
+#nav {
+    display: flex;
+    justify-content: space-between; /* Distribute items across the width */
+    align-items: center; /* Vertically center the nav items */
+    font-size: 1.4rem;
+}
 
-		#nav ul {
-			list-style: none;
-			padding-left: 0;
-			display: flex; /* Make it a flex container */
-			justify-content: center; /* Center items */
-			gap: 50px; /* Adds spacing between menu items */
-		}
+/* Left and Right sections of the nav */
+#nav .left, #nav .right {
+    display: flex;
+    gap: 60px; /* Space between the buttons */
+}
 
-		#nav ul li {
-			float: none; /* Remove float */
-			display: inline-block; /* Ensures proper alignment */
-			line-height: normal; /* Adjusts spacing */
-			padding-left: 0;
-		}
+/* Navigation list */
+#nav ul {
+    list-style: none;
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Flex container for list items */
+    justify-content: center; /* Center items */
+    gap: 50px; /* Adds spacing between menu items */
+	padding-left: 50px;
+	padding-right: 50px;
+}
 
-			#nav ul li a, #nav ul li span {
-				display: block;
-				padding: 0.5em 1em;
-				font-weight: 800;
-				letter-spacing: 0.025em;
-				color: #696969;
-				text-decoration: none;
-				border-radius: 6px;
-				transition: background-color 0.25s ease-in-out;
-			}
+/* Navigation list item */
+#nav ul li {
+    display: inline-block; /* Ensures proper alignment */
+    padding-left: 0;
+}
 
-				#nav ul li > ul {
-					display: none;
-				}
+/* Navigation links and spans */
+#nav ul li a, #nav ul li span {
+    display: block;
+    padding: 0.5em 1em;
+    font-weight: 800;
+    letter-spacing: 0.025em;
+    color: #696969;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: background-color 0.25s ease-in-out;
+}
 
-				#nav ul li:hover a, #nav ul li:hover span {
-					background: #fff;
-				}
+/* Hide sub-menu by default */
+#nav ul li > ul {
+    display: none;
+}
 
-				#nav ul li.active a, #nav ul li.active span {
-					background: #fff;
-				}
+/* Hover state for list items */
+#nav ul li:hover a, #nav ul li:hover span {
+    background-color: #fff;
+}
 
-				#nav ul li.current a {
-					background: var(--darkest-color);
-					color: #fff;
-				}
+/* Active state for list items */
+#nav ul li.active a, #nav ul li.active span {
+    background-color: #fff;
+}
 
-				#nav ul li.highlight a {
-					background: var(--primary-color);
-					color: #fff;
-				}
+/* Current page styling */
+#nav ul li.current a {
+    background-color: var(--darkest-color);
+    color: #fff;
+}
+
+/* Highlight for specific menu items */
+#nav ul li.highlight a {
+    background-color: var(--primary-color);
+    color: #fff;
+}
 
 	.dropotron {
 		background: #fff;
@@ -2434,7 +2400,7 @@ input, select, textarea {
 			#header-wrapper {
 				padding: 1em 0 1em 0;
 				text-align: center;
-				background: black;
+				background: var(--light-bg-color);
 			}
 
 			#footer-wrapper {
@@ -2452,6 +2418,11 @@ input, select, textarea {
 			#logo span {
 				display: block;
 				margin: 0;
+			}
+
+			#logo h1 {
+				font-size: 3.5em;
+				padding: 0.2em 0.275em;
 			}
 
 		/* Nav */
@@ -2801,7 +2772,7 @@ input, select, textarea {
 
 			#header-wrapper {
 				padding: 3em 0 1.5em 0;
-				background: black;
+				background: var(--light-bg-color);
 			}
 
 			#banner-wrapper {
@@ -2914,16 +2885,16 @@ input, select, textarea {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 10px;
-    width: 500px;
+    width: 400px;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     text-align: center;
-    color: var(--lightest-color);
+    color: var(--light-bg-color);
 }
 
 .pricing-card h2 {
     font-size: 28px;
     font-weight: 700;
-    color: white;
+    color: var(--light-bg-color);
 }
 
 .pricing-card h3 {
@@ -2932,7 +2903,7 @@ input, select, textarea {
     font-weight: 700;
     border-bottom: 1px solid white;
     padding-bottom: 5px;
-    color: var(--lightest-color);
+    color: var(--light-bg-color);
 }
 
 .pricing-card p {
@@ -2942,7 +2913,7 @@ input, select, textarea {
     border-bottom: 1px dashed white;
     padding-bottom: 5px;
     margin-bottom: 10px;
-    color: white;
+    color: var(--light-bg-color);
 }
 
 .pricing-card span {
@@ -2965,7 +2936,7 @@ input, select, textarea {
 .directions-btn {
     background-color: var(--primary-color);  /* Green button */
     color: white !important;
-    padding: 15px 30px;
+    padding: 10px 30px;
     font-size: 1.2rem;
     border-radius: 50px;
     border: none;
@@ -2979,8 +2950,218 @@ input, select, textarea {
     transform: scale(1.05);  /* Slight zoom-in effect */
 }
 
-.maps-icon {
-    width: 50px;  /* Set size of map icon */
-    height: 50px;
-    margin-bottom: 20px;  /* Space between icon and button */
+.faq {
+    width: 60%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
+.faq h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.faq details {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    text-align: left;
+	line-height: 1.5;
+}
+
+.faq summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 0;
+    list-style: none;
+    outline: none;
+}
+
+.faq summary::marker {
+    display: none;
+}
+
+.faq summary:before {
+    content: "▶ ";
+    font-size: 14px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.faq details[open] summary:before {
+    content: "▼ ";
+}
+
+.faq details p {
+    margin: 10px 0;
+    color: var(--darkest-color);
+    font-size: 14px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;  /* Align columns at the top */
+    background-color: var(--light-bg-color);
+    color: var(--darkest-color);
+    padding: 40px 10%;
+    gap: 40px; /* Space between columns */
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.footer-column {
+    flex: 1; /* Ensures equal width */
+    min-width: 180px; /* Prevents columns from becoming too narrow */
+}
+
+.footer-column h3 {
+    font-size: 21px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-column p {
+    font-size: 14px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-column a {
+	color: inherit;
+}
+
+.footer-column a:hover {
+    color: #f9a826;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        flex-wrap: wrap; /* Allow wrapping on small screens */
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        flex: 1 1 45%; /* Two columns per row on smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-column {
+        flex: 1 1 100%; /* Single column layout on very small screens */
+    }
+}
+
+/* Gallery Grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive layout */
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Ensure gallery images are clickable */
+}
+
+/* Uniform Image Size */
+.gallery img {
+    width: 100%; /* Make the image take up 100% of the container's width */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure the image fills the space without distortion */
+    cursor: pointer;
+    border-radius: 10px; /* Optional: Rounded corners */
+    transition: transform 0.3s ease-in-out;
+    z-index: 2; /* Make sure images are above other content */
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+.modal {
+    visibility: hidden; /* Start with modal hidden */
+    position: fixed;
+    z-index: 1000; /* Ensure modal shows on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0; /* Start with opacity 0 for fade-in effect */
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s; /* Delay visibility change until after fade-in */
+}
+
+.modal.show {
+    visibility: visible; /* Show the modal */
+    opacity: 1; /* Fade-in complete */
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0s; /* Ensure visibility change happens immediately */
+}
+
+.modal-content {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal.show .modal-content {
+    opacity: 1; /* Fade-in complete for image */
+}
+
+.caption {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    word-wrap: break-word;
+    max-width: 90%;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s ease-in-out;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
